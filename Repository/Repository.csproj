@@ -5,9 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Identity\" />
     <Folder Include="Catalog\" />
-    <Folder Include="Order\" />
+    <Folder Include="Base\" />
     <Folder Include="Payment\" />
+    <Folder Include="Order\" />
   </ItemGroup>
 
 </Project>
