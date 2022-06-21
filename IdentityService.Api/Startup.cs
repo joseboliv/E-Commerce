@@ -8,6 +8,7 @@ namespace IdentityService.Api
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Authentication.Module;
 
     public class Startup
     {
@@ -21,8 +22,10 @@ namespace IdentityService.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
             services.AddVersioning();
             services.AddSwagger();
+            services.AddAuthentication(Configuration);
             services.AddControllers();
 
         }
@@ -33,7 +36,7 @@ namespace IdentityService.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseVersionedSwagger(provider, this.Configuration, env);
+                app.UseVersionedSwagger(provider, Configuration, env);
             }
 
             app.UseHttpsRedirection();

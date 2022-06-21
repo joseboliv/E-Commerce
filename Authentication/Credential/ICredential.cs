@@ -1,11 +1,8 @@
-﻿using System.Threading.Tasks;
-
-namespace Authentication
+﻿namespace Authentication
 {
     public interface ICredential
     {
-        Task<(byte[], byte[], byte[], string)> ChangedPassword<T>(T source, string oldPassword, string newPassword);
-        Task<T> GenerateUserCredential<T>(string username, string password);
-        bool SignIn<T>(T source, string password);
+        object GenerateUserCredential(string password);
+        bool SignIn(object source, string password);
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace IdentityService.Services.Auth
 {
-    public class RoleByModuleByActionType : Identifier
+    internal class AuthServices
     {
     }
 }

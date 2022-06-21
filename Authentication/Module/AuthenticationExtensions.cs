@@ -1,5 +1,6 @@
 ﻿namespace Authentication.Module
 {
+    using Authentication.ContextAccesor;
     using Authentication.Jwt;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.Extensions.Configuration;
@@ -9,7 +10,7 @@
 
     public static class AuthenticationExtensions
     {
-        public static IServiceCollection AddHBAutentication(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration config)
         {
             services.AddAuthentication(x =>
             {
@@ -30,6 +31,7 @@
 
             services.AddTransient<ICredential, Credential>();
             services.AddTransient<IJwtFactory, JwtFactory>();
+            services.AddTransient<ISecurityContextAccessor, SecurityContextAccessor>();
             return services;
         }
     }

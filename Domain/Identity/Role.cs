@@ -19,6 +19,8 @@
 
         public virtual ICollection<RoleByUser> RolesByUsers { get; set; }
 
+        public virtual ICollection<RoleByActionByActionType> RoleByModuleByActionTypes { get; set; }
+
         public int CompareTo(Role other)
         {
             throw new NotImplementedException();

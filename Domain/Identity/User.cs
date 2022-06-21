@@ -14,20 +14,23 @@
 
         [Required]
         public byte[] Password { get; set; }
-        
+
         [Required]
         public byte[] CodeKey { get; set; }
-        
+
         [Required]
         public byte[] CodeIV { get; set; }
-        
+
         [StringLength(250)]
         public string CodeHash { get; set; }
 
         public short? AccessFailedCount { get; set; }
-        
+
+        [Required]
+        public bool ExternalProvider { get; set; }
+
         public DateTime? DueDate { get; set; }
-        
+
         public string DeviceToken { get; set; }
 
         [StringLength(8)]
@@ -45,5 +48,7 @@
         public DateTime? DateModified { get; set; }
 
         public virtual ICollection<RoleByUser> RolesByUsers { get; set; }
+        public virtual ICollection<UserByProvider> UserByProviders { get; set; }
+        public virtual ICollection<TenantByUser> TenantByUsers { get; set; }
     }
 }

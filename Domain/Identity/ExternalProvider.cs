@@ -3,17 +3,15 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Application : Identifier
+    public class ExternalProvider : Identifier
     {
         [Required]
+        [StringLength(100)]
         public string Name { get; set; }
-
-        [Required]
-        public string Version { get; set; }
 
         [Required]
         public bool IsActive { get; set; }
 
-        public virtual ICollection<Module> Modules { get; set; }
+        public ICollection<UserByProvider> UserByProviders { get; set; }
     }
 }

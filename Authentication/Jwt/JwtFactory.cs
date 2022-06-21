@@ -20,13 +20,12 @@
 
         public string GenerateEncodedToken<T>(T @model)
         {
-            UserModel user = @model.ToConvertObjects<UserModel>();
+            UserModel user = @model.Map(new UserModel());
             string secretKey = _configuration["Auth:SecretKey"];
             byte[] key = Encoding.ASCII.GetBytes(secretKey);
             ClaimsIdentity Identity = new();
             Identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
             Identity.AddClaim(new Claim(ClaimTypes.Email, user.UserName));
-            //Identity.AddClaim(new Claim(ClaimTypes.Role, user.Role));
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -38,7 +37,6 @@
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var createdToken = tokenHandler.CreateToken(tokenDescriptor);
-
             return tokenHandler.WriteToken(createdToken);
         }
     }

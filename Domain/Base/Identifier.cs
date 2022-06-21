@@ -8,7 +8,7 @@
         [Required]
         public Guid Id { get; set; }
 
-        public Guid UserCreated { get; set; }
+        public Guid? UserCreated { get; set; }
         public DateTime DateCreated { get; set; }
     }
 }

@@ -18,4 +18,8 @@
     <Folder Include="Module\Swagger\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IdentityService\IdentityService.csproj" />
+  </ItemGroup>
+
 </Project>
