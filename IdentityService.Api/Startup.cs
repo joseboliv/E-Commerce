@@ -9,6 +9,7 @@ namespace IdentityService.Api
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Authentication.Module;
+    using Logging;
 
     public class Startup
     {
@@ -23,6 +24,7 @@ namespace IdentityService.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpContextAccessor();
+            services.AddSerilog(Configuration);
             services.AddVersioning();
             services.AddSwagger();
             services.AddAuthentication(Configuration);

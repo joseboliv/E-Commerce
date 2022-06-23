@@ -3,7 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public abstract class Identifier : AuditableCreate
+    public abstract class Identifier
     {
         [Required]
         public Guid Id { get; set; }
