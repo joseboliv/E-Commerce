@@ -1,19 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-
-namespace IdentityService.Api.Controllers.V1
+﻿namespace IdentityService.Api.Controllers.V1
 {
+    using IdentityService.Api.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using System;
+    using System.Threading.Tasks;
+
     [ApiVersion("1.0")]
     public class UserController : BaseController<UserController>
     {
-        public UserController()
+        public UserController(ILogger<UserController> logger) : base(logger)
         {
 
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Index()
         {
+            throw new ArgumentNullException("Aqui sali oerror");
             return Ok();
         }
 

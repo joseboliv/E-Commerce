@@ -1,4 +1,4 @@
-﻿namespace Authentication.ContextAccesor
+﻿namespace Authentication.ContextAccessor
 {
     using Microsoft.AspNetCore.Http;
     using System;

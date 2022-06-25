@@ -13,34 +13,34 @@
 
             var descriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;
 
-            if (descriptor != null && !descriptor.ControllerName.StartsWith("Auth"))
-            {
-                if (operation.Parameters == null)
-                    operation.Parameters = new List<OpenApiParameter>();
+            //if (descriptor != null && !descriptor.ControllerName.StartsWith("Auth"))
+            //{
+            //    if (operation.Parameters == null)
+            //        operation.Parameters = new List<OpenApiParameter>();
 
-                operation.Parameters.Add(new OpenApiParameter
-                {
-                    Name = "UserToken",
-                    In = ParameterLocation.Header,
+            //    operation.Parameters.Add(new OpenApiParameter
+            //    {
+            //        Name = "UserToken",
+            //        In = ParameterLocation.Header,
 
-                });
-            }
-            else
-            {
-                if (descriptor.ActionName != null && !descriptor.ActionName.StartsWith("ValidateToken"))
-                {
-                    if (operation.Parameters == null)
-                        operation.Parameters = new List<OpenApiParameter>();
+            //    });
+            //}
+            //else
+            //{
+            //    if (descriptor.ActionName != null && !descriptor.ActionName.StartsWith("ValidateToken"))
+            //    {
+            //        if (operation.Parameters == null)
+            //            operation.Parameters = new List<OpenApiParameter>();
 
-                    operation.Parameters.Add(new OpenApiParameter
-                    {
-                        Name = "ApiKey",
-                        In = ParameterLocation.Header,
+            //        operation.Parameters.Add(new OpenApiParameter
+            //        {
+            //            Name = "ApiKey",
+            //            In = ParameterLocation.Header,
 
-                    });
-                }
+            //        });
+            //    }
                 
-            }
+            //}
         }
     }
 }

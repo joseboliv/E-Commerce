@@ -1,16 +1,19 @@
 ﻿namespace IdentityService.Api.Controllers
 {
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using System;
 
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")]
     public abstract class BaseController<T> : ControllerBase where T : class
     {
-        public BaseController()
-        {
+        protected readonly ILogger<T> logger;
 
+        public BaseController(ILogger<T> logger)
+        {
+            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
     }
 }

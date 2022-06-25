@@ -1,6 +1,6 @@
 ﻿namespace Authentication.Module
 {
-    using Authentication.ContextAccesor;
+    using Authentication.ContextAccessor;
     using Authentication.Jwt;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.Extensions.Configuration;

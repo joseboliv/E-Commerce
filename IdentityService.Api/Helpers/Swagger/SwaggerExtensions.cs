@@ -1,17 +1,19 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.PlatformAbstractions;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using System.IO;
-using System.Reflection;
-
-namespace IdentityService.Api.Helpers.Swagger
+﻿namespace IdentityService.Api.Helpers.Swagger
 {
+    using IdentityService.Api.Modules.FeatureFlags;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc.ApiExplorer;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Options;
+    using Microsoft.Extensions.PlatformAbstractions;
+    using Microsoft.FeatureManagement;
+    using Microsoft.OpenApi.Models;
+    using Swashbuckle.AspNetCore.SwaggerGen;
+    using System.IO;
+    using System.Reflection;
+
     /// <summary>
     ///     Swagger Extensions.
     /// </summary>
@@ -32,18 +34,18 @@ namespace IdentityService.Api.Helpers.Swagger
         /// </summary>
         public static IServiceCollection AddSwagger(this IServiceCollection services)
         {
-            //IFeatureManager featureManager = services
-            //    .BuildServiceProvider()
-            //    .GetRequiredService<IFeatureManager>();
+            IFeatureManager featureManager = services
+                .BuildServiceProvider()
+                .GetRequiredService<IFeatureManager>();
 
-            //bool isEnabled = featureManager
-            //    .IsEnabledAsync(nameof(CustomFeature.Swagger))
-            //    .ConfigureAwait(false)
-            //    .GetAwaiter()
-            //    .GetResult();
+            bool isEnabled = featureManager
+                .IsEnabledAsync(nameof(CustomFeature.Swagger))
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
 
-            //if (isEnabled)
-            services
+            if (isEnabled)
+                services
                 .AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>()
                 .AddSwaggerGen(
                     c =>

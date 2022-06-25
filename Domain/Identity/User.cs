@@ -29,6 +29,10 @@
         [Required]
         public bool ExternalProvider { get; set; }
 
+        public DateTime? BirthDay { get; set; }
+
+        public string PhoneNumber { get; set; }
+
         public DateTime? DueDate { get; set; }
 
         public string DeviceToken { get; set; }

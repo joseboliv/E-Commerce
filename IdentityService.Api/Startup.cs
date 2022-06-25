@@ -1,15 +1,19 @@
 namespace IdentityService.Api
 {
+    using Authentication.Module;
     using IdentityService.Api.Helpers;
     using IdentityService.Api.Helpers.Swagger;
+    using IdentityService.Api.Middleware;
+    using IdentityService.Api.Modules.FeatureFlags;
+    using IdentityService.Module;
+    using Infrastructure.MediatR;
+    using Infrastructure.Validator;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Mvc.ApiExplorer;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Authentication.Module;
-    using Logging;
 
     public class Startup
     {
@@ -24,22 +28,29 @@ namespace IdentityService.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpContextAccessor();
-            services.AddSerilog(Configuration);
             services.AddVersioning();
+            services.AddFeatureFlags(Configuration);
             services.AddSwagger();
+            services.AddCustomValidators<Anchor>();
+            services.AddCustomMediatR<Anchor>();
             services.AddAuthentication(Configuration);
+            services.AddServices();
+            services.AddValidatorIdentity();
             services.AddControllers();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsStaging())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseVersionedSwagger(provider, Configuration, env);
             }
+
+            app.UseVersionedSwagger(provider, Configuration, env);
+            app.UseMiddleware<JwtMiddleware>();
+            app.UseMiddleware<ErrorHandlerMiddleware>();
+            //app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 

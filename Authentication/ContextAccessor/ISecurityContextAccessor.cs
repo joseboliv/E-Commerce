@@ -1,4 +1,4 @@
-﻿namespace Authentication.ContextAccesor
+﻿namespace Authentication.ContextAccessor
 {
     using System;
 
