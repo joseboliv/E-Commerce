@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table(name: "Users")]
     public class RoleByActionByActionType : Identifier
     {
         public Guid RoleId { get; set; }

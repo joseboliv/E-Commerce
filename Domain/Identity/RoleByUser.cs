@@ -4,6 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table(name: "Users")]
     public class RoleByUser : Identifier, IEquatable<RoleByUser>, IComparable<RoleByUser>
     {
         [Required]

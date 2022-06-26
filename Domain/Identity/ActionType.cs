@@ -2,7 +2,9 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table(name: "ActionTypes")]
     public class ActionType : Identifier
     {
         [Required]

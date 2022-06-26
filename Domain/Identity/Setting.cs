@@ -1,5 +1,8 @@
 ﻿namespace Domain
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table(name: "Settings")]
     public class Setting : Identifier
     {
         public string Key { get; set; }

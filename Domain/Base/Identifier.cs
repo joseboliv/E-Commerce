@@ -5,6 +5,7 @@
 
     public abstract class Identifier
     {
+        [Key]
         [Required]
         public Guid Id { get; set; }
 

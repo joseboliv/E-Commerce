@@ -3,7 +3,9 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table(name: "Tenants")]
     public class Tenant : Identifier, IEquatable<Tenant>, IComparable<Tenant>
     {
         [Required]

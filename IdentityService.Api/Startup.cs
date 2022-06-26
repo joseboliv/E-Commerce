@@ -5,7 +5,9 @@ namespace IdentityService.Api
     using IdentityService.Api.Helpers.Swagger;
     using IdentityService.Api.Middleware;
     using IdentityService.Api.Modules.FeatureFlags;
+    using IdentityService.Context;
     using IdentityService.Module;
+    using Infrastructure.EfCore;
     using Infrastructure.MediatR;
     using Infrastructure.Validator;
     using Microsoft.AspNetCore.Builder;
@@ -36,6 +38,7 @@ namespace IdentityService.Api
             services.AddAuthentication(Configuration);
             services.AddServices();
             services.AddValidatorIdentity();
+            services.AddCustomDbContext<IdentityDbContext, Anchor>(Configuration);
             services.AddControllers();
         }
 

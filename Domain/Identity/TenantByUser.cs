@@ -3,6 +3,7 @@
     using System;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table(name: "TenantByUsers")]
     public class TenantByUser : Identifier
     {
         public Guid UserId { get; set; }

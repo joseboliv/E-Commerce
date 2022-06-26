@@ -2,12 +2,15 @@
 {
     using DataTransferObject.Security;
     using MediatR;
+    using Microsoft.Extensions.Logging;
     using System.Threading;
     using System.Threading.Tasks;
+    using Utilities.Service;
 
-    public class AuthSignInHandler : IRequestHandler<LoginDto, Response>
+    public class AuthSignInHandler : BaseServices<AuthSignInHandler>, IRequestHandler<LoginDto, Response>
     {
-        public AuthSignInHandler()
+
+        public AuthSignInHandler(ILogger<AuthSignInHandler> logger) : base(logger)
         {
 
         }
