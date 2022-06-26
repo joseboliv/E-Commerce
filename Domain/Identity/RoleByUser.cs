@@ -4,7 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table(name: "Users")]
+    [Table(name: "RoleByUsers")]
     public class RoleByUser : Identifier, IEquatable<RoleByUser>, IComparable<RoleByUser>
     {
         [Required]
