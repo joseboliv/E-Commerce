@@ -9,7 +9,7 @@
         [Required]
         public Guid Id { get; set; }
 
-        public Guid? UserCreated { get; set; }
-        public DateTime DateCreated { get; set; }
+        public Guid? CreatorUser { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

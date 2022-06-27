@@ -1,6 +1,7 @@
 ﻿namespace IdentityService.Context
 {
     using Domain;
+    using IdentityService.Context.Seeder;
     using Infrastructure.EfCore;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -46,6 +47,13 @@
                 .Entity<TenantByUser>(ConfigureTenantByUserAttribute)
                 .Entity<User>(ConfigureUserAttribute)
                 .Entity<UserByProvider>(ConfigureUserByProviderAttribute);
+
+            modelBuilder
+                .ApplyConfiguration(new UserConfiguration())
+                .ApplyConfiguration(new RoleConfiguration())
+                .ApplyConfiguration(new RoleByUserConfiguration())
+                .ApplyConfiguration(new ActionTypeConfiguration());
+
         }
 
         private void ConfigureActionAttribute(EntityTypeBuilder<Action> builder) { }

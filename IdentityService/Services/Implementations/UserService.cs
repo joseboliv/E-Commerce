@@ -9,5 +9,8 @@
         {
 
         }
+
+        //TODO: Construir metodo para la validacion de permisos
+        //Recibe UserId, ActionName y retorna si este tiene permisos
     }
 }

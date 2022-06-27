@@ -12,6 +12,8 @@
             if (operation.Parameters == null) operation.Parameters = new List<OpenApiParameter>();
 
             var descriptor = context.ApiDescription.ActionDescriptor as ControllerActionDescriptor;
+            
+            //TODO: Configurar token refresh en cabecera de la peticion
 
             //if (descriptor != null && !descriptor.ControllerName.StartsWith("Auth"))
             //{

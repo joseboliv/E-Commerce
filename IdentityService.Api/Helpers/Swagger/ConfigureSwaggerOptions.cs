@@ -54,8 +54,7 @@ namespace IdentityService.Api.Helpers.Swagger
                 License = new OpenApiLicense
                 {
                     Name = "Apache License",
-                    Url = new Uri(
-                        UriString1)
+                    Url = new Uri(UriString1)
                 }
             };
 

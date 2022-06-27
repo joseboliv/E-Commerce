@@ -2,7 +2,7 @@
 {
     using Domain.Events;
     using global::MediatR;
-    using Infrastructure.Helper;
+    using Infrastructure.Dapper;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Migrations;
     using Microsoft.Extensions.Configuration;
@@ -21,8 +21,7 @@
             where TDbContext : DbContext, IDbFacadeResolver, IDomainEventContext
         {
             string connectionString = configuration.GetValue<string>("ConnectionString:sqlServer");
-            var connString = ConfigurationHelper.GetConfiguration(AppContext.BaseDirectory)
-                ?.GetConnectionString("ConnectionString:sqlServer");
+            DapperConnectionString.SetConnection(connectionString);
 
             services.AddPooledDbContextFactory<TDbContext>(options =>
             {

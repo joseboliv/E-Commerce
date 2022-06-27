@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Darp\" />
-    <Folder Include="Dapper\" />
     <Folder Include="Tye\" />
   </ItemGroup>
 

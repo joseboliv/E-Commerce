@@ -18,15 +18,12 @@
         [HttpGet]
         public IActionResult Index()
         {
-            throw new ArgumentNullException("Aqui sali oerror");
             return Ok();
         }
 
         [HttpPost]
         public async Task<IActionResult> Register()
         {
-
-
             return Ok();
         }
 

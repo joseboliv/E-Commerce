@@ -5,11 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Identity\" />
-    <Folder Include="Catalog\" />
     <Folder Include="Base\" />
-    <Folder Include="Payment\" />
-    <Folder Include="Order\" />
+    <Folder Include="Catalog\Implementation\" />
+    <Folder Include="Catalog\Interface\" />
+    <Folder Include="Identity\Implementation\" />
+    <Folder Include="Identity\Interface\" />
+    <Folder Include="Order\Implementation\" />
+    <Folder Include="Order\Interface\" />
+    <Folder Include="Payment\Implementation\" />
+    <Folder Include="Payment\Interface\" />
   </ItemGroup>
 
 </Project>

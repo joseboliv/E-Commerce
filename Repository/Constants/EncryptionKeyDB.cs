@@ -2,6 +2,6 @@
 {
     public class EncryptionKeyDB
     {
-        public static string Key => "TTHBx2016";
+        public static string Key => "J@BSx2022";
     }
 }

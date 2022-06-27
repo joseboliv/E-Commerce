@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  sqldata:
+    environment:
+      - SA_PASSWORD=Pa$$w0rd2018
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
+    volumes:
+      - ecommerce-sqldata:/var/opt/mssql
+      

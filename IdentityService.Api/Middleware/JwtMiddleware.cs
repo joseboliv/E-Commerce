@@ -1,5 +1,7 @@
 ﻿namespace IdentityService.Api.Middleware
 {
+    using Authentication.Jwt;
+    using IdentityService.Services;
     using Microsoft.AspNetCore.Http;
     using System.Linq;
     using System.Threading.Tasks;
@@ -13,7 +15,7 @@
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context/*, IAuthUseCases userService, IJwtFactory jwtUtils*/)
+        public async Task Invoke(HttpContext context, IUserService userService, IJwtFactory jwtUtils)
         {
             var authorizationToken = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
             if (authorizationToken != null)
